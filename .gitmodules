@@ -1,0 +1,6 @@
+[submodule "TEMPLATES-COLLECTION/gulp-sass-template"]
+	path = TEMPLATES-COLLECTION/gulp-sass-template
+	url = https://github.com/Victor-Gitahi/gulp-sass-template.git
+[submodule "TEMPLATES-COLLECTION/static-website-template"]
+	path = TEMPLATES-COLLECTION/static-website-template
+	url = https://github.com/Victor-Gitahi/static-website-template.git
