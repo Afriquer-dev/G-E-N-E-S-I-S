@@ -13,10 +13,7 @@ async function copyTemplateFiles(options) {
   }
 }
 
-async function forgeProject(options) {
-  options = await promptForMissingOptions(options);
-  console.log('from forge..\n', options);
-
+async function checkAccess(options) {
   try {
     await fse.access(options.templateDirectory, fse.constants.R_OK);
     console.log(chalk.green.bold('Read Access to the template Directory OK!'));
@@ -27,6 +24,12 @@ async function forgeProject(options) {
     console.log(chalk.red("=========================================="));
     process.exit(1);
   }
+}
+
+async function forgeProject(options) {
+  options = await promptForMissingOptions(options);
+  console.log('from forge..\n', options);
+  await checkAccess(options);
 }
 
 module.exports = {
