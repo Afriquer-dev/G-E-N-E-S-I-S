@@ -3,14 +3,13 @@ const chalk = require('chalk');
 const { forgeProject } = require('../commands/project');
 
 program
-  .command('forge')
+  .command('forge <project_name>')
   .description('forge a project template using a name')
-  .requiredOption('-n, --name <name>', 'name for your project')
-  // .option('-t, --template <template>', 'Template to use when initiating project')
   .option('-s, --skip-prompts', 'skip prompts and use defaults', false)
-  .option('-g, --git', 'Initialize a git repository', false)
+  .option('-g, --init-git', 'Initialize a git repository', false)
   .option('-i, --install-deps', 'Install dependencies required by the templates', false)
-  .action(options => {
+  .action((project_name, options) => {
+    options.name = project_name;
     forgeProject(options);
   }
   );
