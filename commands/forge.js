@@ -1,6 +1,8 @@
 const fse = require('fs-extra');
 const chalk = require('chalk');
 const { promptForMissingOptions } = require('../lib/prompts');
+const { exec } = require('child_process');
+const path = require('path');
 
 async function copyTemplateFiles(options) {
   try {
@@ -11,6 +13,26 @@ async function copyTemplateFiles(options) {
     console.error(err);
     console.log(chalk.red("=========================================="));
   }
+}
+
+async function initializeGitRepo(options) {
+
+  fse.unlink(path.join(options.targetDirectory, '/.git'));
+
+  exec(`cd ${options.projectName} && git init`, (error, stdout, stderr) => {
+    if (error) {
+      console.log(`Error: ${error.message}`);
+      return;
+    }
+    if (stdout) {
+      console.log(chalk.green.bold('Success: '), stdout);
+      return;
+    }
+    if (stderr) {
+      console.log(`Error: ${stderr}`);
+      return;
+    }
+  });
 }
 
 async function checkAccess(options) {
