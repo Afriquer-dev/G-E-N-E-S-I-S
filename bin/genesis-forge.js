@@ -9,7 +9,7 @@ program
   .option('-g, --init-git', 'Initialize a git repository', false)
   .option('-i, --install-deps', 'Install dependencies required by the templates', false)
   .action((project_name, options) => {
-    options.name = project_name;
+    options.projectName = project_name;
     forgeProject(options);
   }
   );
