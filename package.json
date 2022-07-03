@@ -32,9 +32,11 @@
     "fs-extra": "^10.1.0",
     "gitignore": "^0.7.0",
     "inquirer": "^8.0.0",
+    "license": "^1.0.3",
     "listr": "^0.14.3",
     "ncp": "^2.0.0",
     "ora": "^6.1.2",
-    "pkg-install": "^1.0.0"
+    "pkg-install": "^1.0.0",
+    "spdx-license-list": "^6.6.0"
   }
 }
