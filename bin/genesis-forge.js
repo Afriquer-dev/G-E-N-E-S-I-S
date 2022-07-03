@@ -1,6 +1,6 @@
 const program = require('commander');
 const chalk = require('chalk');
-const { forgeProject } = require('../commands/project');
+const { forgeProject } = require('../commands/forge');
 
 program
   .argument('<project_name>')
