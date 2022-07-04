@@ -5,9 +5,9 @@ const { showIntro } = require('../lib/custom-utils');
 
 const authorData = {
   name: 've3Y',
-  email: 'wilfredeveloper@gmail.com'
+  email: 'wilfredeveloper@gmail.com',
+  licence: 'MIT'
 };
-
 showIntro(authorData);
 
 program
