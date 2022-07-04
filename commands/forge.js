@@ -6,6 +6,10 @@ const { runCommand } = require('../lib/custom-utils');
 const path = require('path');
 const { projectInstall } = require('pkg-install');
 const Listr = require('listr');
+const ora = require('ora');
+
+
+const spinner = ora();
 
 async function copyTemplateFiles(options) {
   try {
@@ -14,6 +18,7 @@ async function copyTemplateFiles(options) {
     console.log(chalk.red("=========================================="));
     console.log(chalk.red.bold("An unexpected error occurred while trying to copy template files 👇"));
     console.error(err);
+    process.exit();
     console.log(chalk.red("=========================================="));
   }
 }
@@ -57,6 +62,8 @@ async function forgeProject(options) {
     {
       title: chalk.cyanBright.bold('Git Repository 📙'),
       task: () => {
+        spinner.color = 'yellow';
+        spinner.start();
         return new Listr(
           [
             {
@@ -71,6 +78,7 @@ async function forgeProject(options) {
               task: () => {
                 console.log(chalk.green('\n🧼 sanitizing Git repository'));
                 cleanRepository(options);
+                spinner.stop();
               }
             }
           ]
