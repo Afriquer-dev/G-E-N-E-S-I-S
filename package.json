@@ -39,5 +39,8 @@
     "ora": "^6.1.2",
     "pkg-install": "^1.0.0",
     "spdx-license-list": "^6.6.0"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.1"
   }
 }
