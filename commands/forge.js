@@ -62,20 +62,18 @@ async function forgeProject(options) {
             {
               title: chalk.cyanBright.bold('⚡ Initialize git repository'),
               task: () => {
-                console.log(chalk.green('\n================ Git =================='));
+                console.log(chalk.green('\n⚡ Initialize git repository'));
                 initializeGitRepo(options);
-                console.log(chalk.green('================ Git =================='));
               }
             },
             {
               title: chalk.cyanBright.bold('🧼 sanitizing Git repository'),
               task: () => {
-                console.log(chalk.green('\n================ Git =================='));
+                console.log(chalk.green('\n🧼 sanitizing Git repository'));
                 cleanRepository(options);
-                console.log(chalk.green('================ Git =================='));
               }
             }
-          ], { concurrent: true }
+          ]
         );
       },
       enabled: () => options.git,
