@@ -6,7 +6,7 @@ program
   .argument('<project_name>')
   .description('forge a project template using a name')
   .option('-s, --skip-prompts', 'skip prompts and use defaults', false)
-  .option('-g, --init-git', 'Initialize a git repository', false)
+  .option('--no-git', 'no git repository will be initialised')
   .option('-i, --install-deps', 'Install dependencies required by the templates', false)
   .action((project_name, options) => {
     options.projectName = project_name;
