@@ -2,12 +2,8 @@
 const program = require('commander');
 const pkg = require('../package.json');
 const { showIntro } = require('../lib/custom-utils');
+const { authorData } = require('../lib/config-genesis-cli');
 
-const authorData = {
-  name: 've3Y',
-  email: 'wilfredeveloper@gmail.com',
-  licence: 'MIT'
-};
 showIntro(authorData);
 
 program
