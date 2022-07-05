@@ -1,7 +1,7 @@
 {
-  "name": "template-genesis",
+  "name": "@ve3y/template-genesis",
   "version": "1.0.0",
-  "description": "A manager for front-end templates",
+  "description": "Quickly instantiate boiler plate code from anywhere in terminal",
   "main": "index.js",
   "bin": {
     "genesis": "./bin/genesis.js"
