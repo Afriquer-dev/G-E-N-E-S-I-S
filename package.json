@@ -1,6 +1,6 @@
 {
   "name": "@umbrisoft/template-genesis",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Quickly instantiate boiler plate code from anywhere in terminal",
   "main": "index.js",
   "bin": {
