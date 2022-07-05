@@ -1,5 +1,5 @@
 {
-  "name": "@ve3y/template-genesis",
+  "name": "@umbrisoft/template-genesis",
   "version": "1.0.0",
   "description": "Quickly instantiate boiler plate code from anywhere in terminal",
   "main": "index.js",
@@ -39,9 +39,8 @@
     "ncp": "^2.0.0",
     "ora": "^5.4.1",
     "pkg-install": "^1.0.0",
-    "spdx-license-list": "^6.6.0"
-  },
-  "devDependencies": {
+    "spdx-license-list": "^6.6.0",
     "conf": "^10.1.2"
-  }
+  },
+  "devDependencies": {}
 }
