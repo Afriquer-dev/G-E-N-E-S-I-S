@@ -5,6 +5,8 @@ const { showIntro } = require('../lib/custom-utils');
 const { authorData } = require('../lib/config-genesis-cli');
 
 showIntro(authorData);
+const isWindows = process.platform === 'win32';
+
 
 program
   .version(pkg.version)

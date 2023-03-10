@@ -7,6 +7,7 @@ const path = require('path');
 const { projectInstall } = require('pkg-install');
 const Listr = require('listr');
 const ora = require('ora');
+const fs = require('fs');
 
 
 const spinner = ora();
@@ -25,7 +26,8 @@ async function copyTemplateFiles(options) {
 
 async function initializeGitRepo(options) {
 
-  fse.unlink(path.join(options.targetDirectory, '/.git'));
+  // fse.unlink(path.join(options.targetDirectory, '/.git'));
+  fs.rmSync(path.join(options.targetDirectory, "/.git"), { recursive: true, force: true });
 
   runCommand(`cd ${options.projectName} && git init`);
 }
@@ -60,6 +62,17 @@ async function forgeProject(options) {
       task: () => copyTemplateFiles(options),
     },
     {
+      title: chalk.cyanBright.bold('✨ Installing dependencies'),
+      task: () =>
+        projectInstall({
+          cwd: options.targetDirectory,
+        }),
+      skip: () =>
+        !options.installDeps
+          ? "[INFO] USE `--install` to automatically install dependencies."
+          : undefined,
+    },
+    {
       title: chalk.cyanBright.bold('Git Repository 📙'),
       task: () => {
         spinner.color = 'yellow';
@@ -72,30 +85,12 @@ async function forgeProject(options) {
                 console.log(chalk.green('\n⚡ Initialize git repository'));
                 initializeGitRepo(options);
               }
-            },
-            {
-              title: chalk.cyanBright.bold('🧼 sanitizing Git repository'),
-              task: () => {
-                console.log(chalk.green('\n🧼 sanitizing Git repository'));
-                cleanRepository(options);
-                spinner.stop();
-              }
             }
           ]
         );
+
       },
       enabled: () => options.git,
-    },
-    {
-      title: chalk.cyanBright.bold('✨ Installing dependencies'),
-      task: () =>
-        projectInstall({
-          cwd: options.targetDirectory,
-        }),
-      skip: () =>
-        !options.installDeps
-          ? 'Pass --install to automatically install dependencies'
-          : undefined,
     }
   ];
 
@@ -103,6 +98,7 @@ async function forgeProject(options) {
 
   await tasks.run();
   console.log(chalk.green(`✨ DONE, Successfully created `), chalk.yellow.bold(`${options.projectName}`));
+  spinner.stop();
 }
 
 module.exports = {
