@@ -1,5 +1,5 @@
 {
-  "name": "@umbrisoft/template-genesis",
+  "name": "gnesys",
   "version": "1.0.1",
   "description": "Quickly instantiate boiler plate code from anywhere in terminal",
   "main": "index.js",
